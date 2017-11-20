@@ -1,0 +1,48 @@
+<div style="text-align: right">
+    <a [routerLink]= "['/dashboard']">Cancel</a> 
+  </div>
+
+
+<h3>Put the question and options here:</h3>
+
+<form (submit) = "addQuestion()" #qForm = "ngForm">
+  Question: <input type="text" name="question"
+  required
+  minlength="8"
+  [(ngModel)] = "poll.question"
+  #question = "ngModel">
+  <h5 style="color:red" *ngIf = "question.invalid" class="invalid"> Question must be at least 8 characters long.</h5>
+  <br>
+  Option 1 : <input type="text" name="one" 
+  required
+  minlength="3"
+  [(ngModel)] = "poll.optionOne"
+  #one = "ngModel">
+  <h5 style="color:red" *ngIf = "one.invalid" class="invalid"> Option must be at least 3 characters long.</h5>
+  <br>
+  Option 2 : <input type="text" name="two" 
+  required
+  minlength="3"
+  [(ngModel)] = "poll.optionTwo"
+  #two = "ngModel">
+  <h5 style="color:red" *ngIf = "two.invalid" class="invalid"> Option must be at least 3 characters long.</h5>
+  <br>
+  Option 3 : <input type="text" name="three" 
+  required
+  minlength="3"
+  [(ngModel)] = "poll.optionThree"
+  #three = "ngModel">
+  <h5 style="color:red" *ngIf = "three.invalid" class="invalid"> Option must be at least 3 characters long.</h5>
+  <br>
+  Option 4 : <input type="text" name="four" 
+  required
+  minlength="3"
+  [(ngModel)] = "poll.optionFour"
+  #four = "ngModel">
+  <h5 style="color:red" *ngIf = "four.invalid" class="invalid"> Option must be at least 3 characters long.</h5>
+  <br>
+  <input type="submit" value="Create Poll" [disabled] = "qForm.invalid">
+</form>
+
+
+

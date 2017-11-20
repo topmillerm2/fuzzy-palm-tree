@@ -1,0 +1,29 @@
+<div style="text-align: right">
+    <a [routerLink]= "['/new/poll']" >Create a New Poll</a> || <a href="">Logout</a>
+  </div>
+
+<h1>Current Polls</h1>
+<div>
+  <input type="text" name="searchString" #searchString = "ngModel" [(ngModel)] = "stringSearch" 
+  (keyup)="searchNotes()"
+>
+<input type="submit" value="Search">
+</div>
+
+<fieldset>
+  <table>
+    <tr>
+      <td style= "font-weight: bold">Name</td>
+      <td style= "font-weight: bold">Survey Question</td>
+      <td style= "font-weight: bold">Date Posted</td>
+      <td style= "font-weight: bold">Action</td>
+    </tr>
+    <tr *ngFor = "let poll of shownPolls">
+      <td> {{ poll._user.Name }}</td>
+      <td> <a [routerLink]= "['/poll/',poll._id]"> {{ poll.question }} </a> </td>
+      <td> {{ poll.createdAt | date:'longDate' }}</td>
+      <td *ngIf = "poll._user._id == user" >
+        <button (click)="del(poll._id)" >Delete</button></td>
+    </tr>
+  </table>
+</fieldset>

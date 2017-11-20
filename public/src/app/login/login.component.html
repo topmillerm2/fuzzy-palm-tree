@@ -1,0 +1,10 @@
+<form (submit) = "onSubmit()" #logForm = "ngForm">
+  Your Name: <input type="text" name="name" 
+  required
+  minlength="1"
+  [(ngModel)] = "logName.Name"
+  #name = "ngModel"
+  >
+  <input type="submit" value="Login" [disabled]="logForm.invalid">
+</form>
+ 

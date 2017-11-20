@@ -1,0 +1,24 @@
+<div style="text-align: right">
+    <a  [routerLink]= "['/dashboard']"> Go to Polls</a>
+</div>
+
+
+<h1 *ngFor="let poll of polls"> {{ poll.question }}</h1>
+<p style="text-decoration:underline; color: green">Click the Vote button to choose one. </p>
+
+
+<table>
+  <tr>
+    <td style= "font-weight: bold">Option</td>
+    <td style= "font-weight: bold">Current Count of Votes</td>
+    <td style= "font-weight: bold">Action</td>
+  </tr>
+  <tr *ngFor="let option of options; let idx = index">
+    <td> {{ option }}</td>
+    <td *ngIf="idx == 0"> {{ count[0] }}</td>
+    <td *ngIf="idx == 1"> {{ count[1] }}</td>
+    <td *ngIf="idx == 2"> {{ count[2] }}</td>
+    <td *ngIf="idx == 3"> {{ count[3] }}</td>
+    <td> <button (click) = "vote(idx)" >Vote</button></td>
+  </tr>
+</table>
